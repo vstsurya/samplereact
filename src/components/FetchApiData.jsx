@@ -36,9 +36,9 @@ export default class FetchApiData extends React.Component {
         return (
             <div className='App'>
                 <h1>Data Loaded</h1>
-                <h2>No of Records</h2> : {this.state.personsData.response.noOfRecords}
+                
                 <ul>
-                    {this.state.personsData.response.person_skills.map( personSkill => (
+                    {this.state.personsData.map( personSkill => (
                         <li key={personSkill.id}>
                             Name : {personSkill.name} | Mail : {personSkill.email}
                         </li>
