@@ -11,7 +11,6 @@ export default class FetchApiData extends React.Component {
     }
 
     async getApiData() {
-        //Update url here with required query paramas
         const result =  await fetch('https://jsonplaceholder.typicode.com/users', {
             method : 'GET',
             headers : new Headers( {
@@ -35,15 +34,31 @@ export default class FetchApiData extends React.Component {
         if (this.state.loaded) {
         return (
             <div className='App'>
-                <h1>Data Loaded</h1>
-                
-                <ul>
-                    {this.state.personsData.map( personSkill => (
-                        <li key={personSkill.id}>
-                            Name : {personSkill.name} | Mail : {personSkill.email}
-                        </li>
-                    ))}
-                </ul>
+                <h1>Data Loaded</h1>             
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Website</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        this.state.personsData.map((person,i) =>(
+                            <tr key={i}>
+                                <td>{person.name}</td>
+                                <td>{person.username}</td>
+                                <td>{person.email}</td>
+                                <td>{person.phone}</td>
+                                <td>{person.website}</td>
+                            </tr>
+                            ))
+                    }
+                    </tbody>
+                </table>
             </div>
         );
         }
